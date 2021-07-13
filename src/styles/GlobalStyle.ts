@@ -3,10 +3,11 @@ import reset from "styled-reset";
 
 const GlobalStyle = createGlobalStyle`
 ${reset};
+
 *{
-    margin: 0px;
+    margin: 0 auto;
     padding: 0px;
-    box-sizing:border-box;
+    box-sizing:border-box; ;
 }
        
 ol,
