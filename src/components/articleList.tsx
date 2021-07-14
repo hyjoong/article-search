@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Article } from "store/types";
+import { useDispatch } from "react-redux";
+import { sortArticleList } from "actions";
 
 interface ArticleListProps {
   articles: Article[];
@@ -8,9 +10,17 @@ interface ArticleListProps {
 
 const ArticleList: React.FC<ArticleListProps> = (props) => {
   const { articles } = props;
-
+  const dispatch = useDispatch();
   return (
     <ArticleListWrapper>
+      <SortButtonWrapper>
+        <SortButton onClick={() => dispatch(sortArticleList(0))}>
+          날짜
+        </SortButton>
+        <SortButton onClick={() => dispatch(sortArticleList(1))}>
+          출처
+        </SortButton>
+      </SortButtonWrapper>
       {articles.map((article, idx) => (
         <ArticleContainer key={idx} onClick={() => window.open(article.url)}>
           <Title>{article.title}</Title>
@@ -57,3 +67,6 @@ const Content = styled.div`
     padding: 0 20px 20px 0;
   }
 `;
+
+const SortButtonWrapper = styled.div``;
+const SortButton = styled.button``;

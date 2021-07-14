@@ -15,6 +15,7 @@ const Main: React.FC = () => {
   const [postsPerPage] = useState<number>(4);
   const { articles } = useSelector((state: RootState) => state.ArticleReducer);
   const dispatch = useDispatch();
+
   const indexOfLastArticle = currentPage * postsPerPage;
   const indexOfFirstArticle = indexOfLastArticle - postsPerPage;
   const currentArticles = articles.slice(

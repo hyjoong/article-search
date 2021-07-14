@@ -1,4 +1,5 @@
 export const FETCH_ARTICLE_LIST = "FETCH_ARTICLE_LIST";
+export const SORT_ARTICLE_LIST = "SORT_ARTICLE_LIST";
 
 export interface Source {
   id: string;
@@ -24,4 +25,9 @@ export interface FetchArticleListAction {
   payload: Article[];
 }
 
-export type ArticleActionTypes = FetchArticleListAction;
+export interface SortArticleListAction {
+  type: typeof SORT_ARTICLE_LIST;
+  payload: number;
+}
+
+export type ArticleActionTypes = FetchArticleListAction | SortArticleListAction;
