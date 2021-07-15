@@ -4,8 +4,10 @@ import styled from "styled-components";
 interface PaginationProps {
   totalArticles: number;
   postsPerPage: number;
+  currentPage?: number;
   paginate: (pageNum: number) => void;
 }
+
 const Pagenation: React.FC<PaginationProps> = (props) => {
   const { totalArticles, postsPerPage, paginate } = props;
   const pageNumber = [];
@@ -13,6 +15,7 @@ const Pagenation: React.FC<PaginationProps> = (props) => {
   for (let i = 1; i <= Math.ceil(totalArticles / postsPerPage); i++) {
     pageNumber.push(i);
   }
+
   return (
     <PagenationWrapper>
       {pageNumber.map((page, idx) => (

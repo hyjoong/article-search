@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+import { RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +11,7 @@ import { RootState } from "reducers";
 
 const NEWS_API = process.env.REACT_APP_API_KEY;
 
-const Main: React.FC = () => {
+const Main: React.FC<RouteComponentProps> = (props) => {
   const [word, setWord] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [postsPerPage] = useState<number>(4);
@@ -41,6 +43,12 @@ const Main: React.FC = () => {
 
   return (
     <MainWrapper>
+      <Nav>
+        <NavButton>즐겨찾기</NavButton>
+        <NavButton onClick={() => props.history.push("/signin")}>
+          로그인
+        </NavButton>
+      </Nav>
       <SearchWrapper>
         <SearchInput
           onChange={(e) => setWord(e.target.value)}
@@ -53,6 +61,7 @@ const Main: React.FC = () => {
       <ArticleList articles={currentArticles} />
       <Pagenation
         totalArticles={articles.length}
+        currentPage={currentPage}
         postsPerPage={postsPerPage}
         paginate={paginate}
       />
@@ -71,3 +80,20 @@ const SearchWrapper = styled.section`
 const SearchInput = styled.input``;
 
 const SearchButton = styled.button``;
+
+const Nav = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 40px;
+`;
+
+const NavButton = styled.button`
+  display: block;
+  padding-left: 24px;
+  background: none;
+  font-size: 20px;
+  &:hover {
+    color: #0032bc;
+    font-weight: 600;
+  }
+`;
