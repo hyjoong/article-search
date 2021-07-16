@@ -8,6 +8,7 @@ import ArticleList from "components/articleList";
 import Pagenation from "components/pagenation";
 import { fetchArticleList } from "actions";
 import { RootState } from "reducers";
+import Nav from "../components/nav";
 
 const NEWS_API = process.env.REACT_APP_API_KEY;
 
@@ -43,12 +44,8 @@ const Main: React.FC<RouteComponentProps> = (props) => {
 
   return (
     <MainWrapper>
-      <Nav>
-        <NavButton>즐겨찾기</NavButton>
-        <NavButton onClick={() => props.history.push("/signin")}>
-          로그인
-        </NavButton>
-      </Nav>
+      <Nav />
+
       <SearchWrapper>
         <SearchInput
           onChange={(e) => setWord(e.target.value)}
@@ -70,21 +67,29 @@ const Main: React.FC<RouteComponentProps> = (props) => {
 };
 export default Main;
 
-const MainWrapper = styled.main``;
+const MainWrapper = styled.main`
+  width: 60%;
+  margin: 0 auto 50px;
+`;
 
 const SearchWrapper = styled.section`
   display: flex;
-  margin: 3rem 0;
+  align-items: center;
+  width: 80%;
+  margin: 50px auto 0;
 `;
 
-const SearchInput = styled.input``;
+const SearchInput = styled.input`
+  width: 100%;
+  height: 60px;
+  padding: 10px;
+  margin-right: 20px;
+  font-size: 20px;
+`;
 
-const SearchButton = styled.button``;
-
-const Nav = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 40px;
+const SearchButton = styled.button`
+  width: 60px;
+  height: 40px;
 `;
 
 const NavButton = styled.button`

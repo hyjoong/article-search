@@ -1,3 +1,5 @@
+import Bookmark from "pages/bookmark";
+import EditArticle from "pages/editArticle";
 import Main from "pages/main";
 import SignIn from "pages/signIn";
 import React from "react";
@@ -11,6 +13,8 @@ const Routes: React.FunctionComponent = () => {
       <Switch>
         <Route exact path="/" component={Main} />
         <Route path="/signin" component={SignIn} />
+        <Route path="/bookmark" component={Bookmark} />
+        <Route path="/edit" component={EditArticle} />
       </Switch>
     </Router>
   );
